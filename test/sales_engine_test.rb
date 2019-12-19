@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/sales_engine'
+require 'pry'
 
 class SalesEngineTest < Minitest::Test
   def setup
@@ -8,6 +9,7 @@ class SalesEngineTest < Minitest::Test
       :items     => "./data/items.csv",
       :merchants => "./data/merchants.csv",
     })
+
   end
 
   def test_it_exists
@@ -27,5 +29,21 @@ class SalesEngineTest < Minitest::Test
 
   def test_it_can_create_a_merchant_collection
     assert_instance_of MerchantCollection, @sales_engine.merchant_collection
+  end
+
+  def test_it_gets_top_merchants_by_item_production
+    expected = [
+      "FlavienCouche",
+      "Keckenbauer",
+      "aperfectmessCandleCo",
+      "HooknSpindle",
+      "Necklacemaniac",
+      "ShopDixieChicken",
+      "perfectbrooches",
+      "AlchemyandRoot",
+      "safetygear",
+    ]
+
+    assert_equal expected, @sales_engine.top_item_producing_merchants
   end
 end
