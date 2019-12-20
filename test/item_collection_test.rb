@@ -4,7 +4,7 @@ require './lib/item_collection'
 
 class ItemCollectionTest < Minitest::Test
   def setup
-    @item_collection = ItemCollection.new("./test/fixtures/items_truncated.csv")
+    @item_collection = ItemCollection.new("./test/fixtures/items_truncated.csv", Item)
     @item = @item_collection.items[2]
   end
 
